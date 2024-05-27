@@ -1,0 +1,4 @@
+- "!include public_category.yaml"
+- "!include public_panel.yaml"
+- "!include public_todos.yaml"
+- "!include public_user.yaml"

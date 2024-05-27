@@ -1,0 +1,29 @@
+table:
+  name: user
+  schema: public
+array_relationships:
+  - name: category
+    using:
+      manual_configuration:
+        column_mapping:
+          id: user_id
+        insertion_order: null
+        remote_table:
+          name: category
+          schema: public
+  - name: panel
+    using:
+      manual_configuration:
+        column_mapping:
+          id: user_id
+        insertion_order: null
+        remote_table:
+          name: panel
+          schema: public
+  - name: todos
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: todos
+          schema: public

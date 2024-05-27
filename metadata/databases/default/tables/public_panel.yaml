@@ -1,0 +1,45 @@
+table:
+  name: panel
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      manual_configuration:
+        column_mapping:
+          user_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public
+array_relationships:
+  - name: todos
+    using:
+      manual_configuration:
+        column_mapping:
+          id: panel_id
+        insertion_order: null
+        remote_table:
+          name: todos
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - user_id
+        - name
+    comment: ""
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - user_id
+        - name
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+    comment: ""
